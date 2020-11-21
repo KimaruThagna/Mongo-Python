@@ -37,3 +37,14 @@ def sort_documents(bool):
 
 def collection_limit_output():
     return collection.find().skip(2).limit(3) # skip the first 2 documents, limit results to 3 documents
+
+def sum_aggregator():
+    agr = [{'$group': {'_id': 1, 'all': {'$sum': '$price'}}}]
+
+    return list(collection.aggregate(agr))
+
+def filtered_sum_aggregator():
+    agr = [{'$match': {'$or': [{'name': "Audi"}, {'name': "Volvo"}]}},
+           {'$group': {'_id': 1, 'sum2cars': {'$sum': "$price"}}}]
+
+    return list(collection.aggregate(agr))
