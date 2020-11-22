@@ -9,13 +9,24 @@ cars = [ {'name': 'Audi', 'price': 52642},
     {'name': 'Hummer', 'price': 41400},
     {'name': 'Volkswagen', 'price': 21600} ]
 
+# inserting a single document
+#collection.insert()
+def delete_all():
+    collection.drop()
+
+def delete_one(car):
+    collection.delete_one({'name':car})
+
+def delete_some(filter):# supply filter as a dictionary
+    collection.delete_many(filter)
+
 
 def multiple_data_insert():
     collection.insert_many(cars)
     return 'Success. multiple inserts committed'
 # db.collection.find_one() retrieves the first document in the  collection
 def multiple_data_retrieve():
-    return collection.find()
+    return collection.find().pretty()
 
 def single_retrieve(id):
     return collection.find({"_id":id})
