@@ -21,9 +21,12 @@ def single_retrieve(id):
     return collection.find({"_id":id})
 
 def find_and_update(id):
-    collection.find_one_and_update({'_id':id},
+    return collection.find_one_and_update({'_id':id},
                                    {'$inc':{'price':0.554}},
+                                    upsert=True, # if it doesnt exist, create it. Should be having all relevant fields in the update though
+                                    projection={'name':True,'price':False},# determine which fields you want to see
                                    return_document=ReturnDocument.AFTER) # return the updated version of a document
+
 def single_update(id):
     collection.update({'_id':id},{'$inc':{"price":25.55},
                                   '$set':{"name":'Fancy new car'}
