@@ -1,4 +1,4 @@
-from db_config import client, collection
+from db_config import  collection
 from pymongo import DESCENDING,ASCENDING, ReturnDocument
 cars = [ {'name': 'Audi', 'price': 52642},
     {'name': 'Mercedes', 'price': 57127},
@@ -25,6 +25,7 @@ def multiple_data_insert():
     collection.insert_many(cars)
     return 'Success. multiple inserts committed'
 # db.collection.find_one() retrieves the first document in the  collection
+
 def multiple_data_retrieve():
     return collection.find().pretty()
 

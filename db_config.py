@@ -11,4 +11,5 @@ collection = db['car_locations']
 
 # issue commands
 #result = db.command("serverStatus") or dbstats
-print("Colletion created........")
+print("Car Colletion created........")
+salary_collection = db['salary_collection']
